@@ -78,7 +78,7 @@
           }
         },
         onError: () => {
-          status.textContent = 'YouTube 播放器暫時無法載入，請改用「在 YouTube 觀看」。';
+          status.textContent = 'YouTube 播放器暫時無法載入，請稍後重新整理再試。';
         }
       }
     });
@@ -88,7 +88,7 @@
   api.src = 'https://www.youtube.com/iframe_api';
   api.async = true;
   api.addEventListener('error', () => {
-    status.textContent = 'YouTube 播放器暫時無法載入，請改用「在 YouTube 觀看」。';
+    status.textContent = 'YouTube 播放器暫時無法載入，請稍後重新整理再試。';
   });
   document.head.append(api);
 })();
