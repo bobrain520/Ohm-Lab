@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f6f1">
+  <title>Ohm Lab｜把公式變成直覺</title>
+  <link rel="icon" href="video/manim/poster.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="model.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="video/manim/chapters.js"></script>
+  <script defer src="video/player.js"></script>
+</head>
+<body>
+  <header class="masthead wrap">
+    <a class="brand" href="index.html" aria-label="Ohm Lab 首頁"><span class="brand-mark">Ω</span> Ohm Lab<span class="brand-caption">互動電學筆記</span></a>
+    <span class="edition">EXPERIMENT 001 <span>／ 歐姆定律</span></span>
+  </header>
+  <main class="wrap">
+    <section class="intro">
+      <div><p class="eyebrow">少一點背誦，多一點理解</p><h1>把公式，<span>變成直覺。</span></h1><p class="intro-copy">電壓、電阻改變時，電流會怎麼走？<br class="mobile-break">先猜一猜，再讓電路告訴你。</p><div class="intro-actions"><button id="intro-learn" class="primary" type="button">直接動手實驗</button><button id="intro-video" class="secondary" type="button">先看 4 分鐘影片</button></div></div>
+      <div class="formula-hero" aria-label="V 等於 I 乘以 R"><span class="v-color">V</span><span class="operator">=</span><span class="i-color">I</span><span class="operator">×</span><span class="r-color">R</span><small>三個量，一個關係。</small></div>
+    </section>
+    <section id="video-section" class="video-section" aria-labelledby="video-title">
+      <div class="video-copy"><p class="eyebrow">先理解，再動手 · 約 4 分 20 秒</p><h2 id="video-title">先看懂關係，再親手驗證。</h2><p>先猜電流會怎麼變，再從水流類比回到電路，親眼看見兩個小實驗的結果。附台灣中文合成旁白與重點字幕；隨時可以暫停思考。手機可切換全螢幕觀看。</p></div>
+      <video id="lesson-video" controls playsinline preload="metadata" poster="video/manim/poster.jpg" aria-label="歐姆定律教學影片，含旁白與內嵌字幕"><source src="video/manim/ohms-law-manim.mp4" type="video/mp4">你的瀏覽器不支援影片播放，請下載 MP4 觀看。</video>
+      <div class="movie-actions"><button id="movie-toggle" class="primary">播放教學影片</button><button id="begin-learning" class="secondary">直接進入互動學習 ↓</button><span id="movie-status" role="status"></span></div>
+      <details class="movie-tools"><summary>影片章節與重看</summary><div class="movie-tool-actions"><button id="movie-restart" class="secondary">從頭重看</button></div><nav id="movie-chapters" aria-label="教學影片章節"></nav></details>
+    </section>
+    <div id="learning-start" class="learning-heading" tabindex="-1"><p class="eyebrow">換你動手</p><h2>從適合你的起點開始。</h2><p>第一次接觸可以先認識 V、I、R；已經懂基礎，就直接挑戰電流預測。</p></div>
+    <section class="learning-route" aria-labelledby="route-title" aria-describedby="route-description">
+      <div class="route-copy"><h3 id="route-title">你想從哪裡開始？</h3><p id="route-description">兩條路都會進入同一套互動實驗，隨時可以切換。</p></div>
+      <div class="route-actions">
+        <button id="begin-basics" class="route-choice route-choice-primary" type="button"><span class="route-label">第一次學</span><strong>先認識 V、I、R</strong><small>用三個小實驗建立直覺，約 3 分鐘</small><span class="route-symbols" aria-hidden="true"><i>V</i><i>I</i><i>R</i></span></button>
+        <button id="begin-challenge" class="route-choice route-choice-secondary" type="button"><span class="route-label">已經懂基礎</span><strong>直接挑戰電流預測</strong><small>從 V 與 R 同時加倍開始</small></button>
+      </div>
+    </section>
+    <nav class="steps" aria-label="互動學習階段" hidden>
+      <button data-stage="challenge"><span>01</span>預測挑戰</button><button data-stage="practice"><span>02</span>操作任務</button><button data-stage="explore"><span>03</span>自由探索</button>
+    </nav>
+    <details id="review-experiments" class="review-experiments" hidden><summary>基礎實驗：認識 V、I、R</summary><p>先看懂一個簡單電路，再一次改變一個量。這裡先觀察結果，不需要預測。</p><div><button data-step="0">認識電路</button><button data-step="1">固定 R，改變 V</button><button data-step="2">固定 V，改變 R</button></div></details>
+    <section class="lesson" aria-labelledby="lesson-title" hidden>
+      <div class="lesson-copy"><p id="lesson-kicker" class="eyebrow"></p><h2 id="lesson-title" tabindex="-1"></h2><p id="lesson-description"></p></div>
+      <div class="lesson-actions">
+        <div id="prediction" hidden><p id="prediction-label">先選一個預測：電流會……</p><div class="choices" role="group" aria-labelledby="prediction-label"><button data-predict="up" aria-pressed="false">↗ 增加</button><button data-predict="down" aria-pressed="false">↘ 減少</button><button data-predict="same" aria-pressed="false">→ 不變</button></div></div>
+        <button id="run-experiment" class="primary" hidden>改變條件，看結果 <span>↗</span></button>
+        <div id="task-guide" class="task-guide" hidden>
+          <div class="slider-guide"><span class="slider-guide-demo" aria-hidden="true"><i></i></span><p id="slider-guide-copy"></p></div>
+        </div>
+      </div>
+    </section>
+    <div class="workspace" hidden>
+      <div class="lab-ribbon" aria-label="實驗操作提示">
+        <span class="lab-ribbon-title"><i aria-hidden="true">Ω</i> 歐姆實驗桌</span>
+        <span class="lab-ribbon-flow"><b class="v-color">調整 V</b><i aria-hidden="true">→</i><b class="r-color">調整 R</b><i aria-hidden="true">→</i><b class="i-color">觀察 I</b></span>
+      </div>
+      <section class="card circuit-card" aria-labelledby="circuit-title">
+        <div class="card-heading"><div><p class="eyebrow">THE CIRCUIT</p><h2 id="circuit-title">讓電路說話</h2></div><label class="motion-toggle"><input id="motion-toggle" type="checkbox" checked>流動示意</label></div>
+        <div class="circuit-stage">
+          <svg id="circuit" viewBox="0 0 560 285" role="img" aria-labelledby="circuit-svg-title circuit-svg-desc">
+            <title id="circuit-svg-title">理想直流電源與單一電阻的閉合電路</title><desc id="circuit-svg-desc">傳統電流由電源正極經電阻流向負極。</desc>
+            <defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#e0e4de"/></pattern><marker id="arrow" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0 L5 3 L0 6" fill="none" stroke="#167666" stroke-width="1.3"/></marker></defs>
+            <rect width="560" height="285" fill="url(#dots)"/>
+            <path id="wire" d="M100 126 V75 H245 M315 75 H460 V222 H100 V158" fill="none" stroke="#5d6f67" stroke-width="3" stroke-linejoin="round"/>
+            <path id="flow-path" d="M100 126 V75 H460 V222 H100 V158" fill="none" stroke="none"/>
+            <g id="particles" aria-hidden="true"></g>
+            <rect x="245" y="63" width="70" height="24" rx="1" fill="#f7f6fb" stroke="#77629e" stroke-width="3"/>
+            <path d="M79 126 H121 M88 142 H112 M100 142 V158" fill="none" stroke="#bb653e" stroke-width="3.5"/>
+            <text x="65" y="119" class="polarity">+</text><text x="66" y="160" class="polarity">−</text>
+            <text x="280" y="41" text-anchor="middle" class="svg-label r-fill" id="circuit-r">100 Ω</text>
+            <text x="145" y="142" class="svg-label v-fill" id="circuit-v">5 V</text>
+            <path d="M352 104 H404" stroke="#167666" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="280" y="170" text-anchor="middle" class="current-readout i-fill" id="circuit-i">50 mA</text>
+            <text x="280" y="193" text-anchor="middle" class="svg-caption">電流 I</text>
+            <text x="280" y="263" text-anchor="middle" class="svg-caption circuit-direction-caption">傳統電流方向：外部電路由 ＋ 流向 −</text>
+          </svg>
+        </div>
+        <p class="mobile-circuit-caption">傳統電流方向：外部電路由 ＋ 流向 −</p>
+        <p id="control-instruction" class="control-instruction"></p>
+        <div class="controls">
+          <p id="fixed-condition" class="fixed-condition" aria-live="polite"></p>
+          <div class="control v-control"><div class="control-top"><label for="v-range"><span class="symbol">V</span> 電壓 <span id="v-lock" class="lock"></span></label><div class="number-input"><input id="v-number" type="number" min="0" max="12" step="0.1" value="5" aria-label="電壓數值" aria-describedby="v-error"><span>V</span></div></div><input id="v-range" type="range" min="0" max="12" step="0.1" value="5" aria-label="調整電壓"><div class="range-labels"><span>0 V</span><span>12 V</span></div><p id="v-error" class="input-error" aria-live="polite"></p></div>
+          <div class="control r-control"><div class="control-top"><label for="r-range"><span class="symbol">R</span> 電阻 <span id="r-lock" class="lock"></span></label><div class="number-input"><input id="r-number" type="number" min="50" max="1000" step="10" value="100" aria-label="電阻數值" aria-describedby="r-error"><span>Ω</span></div></div><input id="r-range" type="range" min="50" max="1000" step="10" value="100" aria-label="調整電阻"><div class="range-labels"><span>50 Ω</span><span>1000 Ω</span></div><p id="r-error" class="input-error" aria-live="polite"></p></div>
+        </div>
+        <div class="current-comparison"><div><span>基準電流</span><strong id="before-current">50 mA</strong></div><span aria-hidden="true">→</span><div><span>目前電流</span><strong id="after-current">50 mA</strong></div></div>
+        <div class="experiment-flow">
+          <p id="lesson-status" class="status" aria-live="polite"></p>
+          <div id="task-panel" class="task-panel" hidden>
+            <details id="task-hint"><summary>給我一點計算提示</summary><p id="hint-text"></p></details>
+            <div class="task-check"><button id="check-answer" class="primary">檢查答案 →</button></div>
+            <p id="task-feedback" role="status"></p>
+          </div>
+          <p id="flow-note" class="flow-note"></p>
+          <div class="flow-navigation"><button id="reset" class="secondary">重設這一步</button><button id="next" class="primary">下一步 <span>→</span></button></div>
+        </div>
+      </section>
+      <p class="mobile-observation-guide"><span aria-hidden="true">↕</span> 先一起看電路與 I–V 圖，再調整條件比較變化。</p>
+      <section id="graph-panel" class="card graph-card" aria-labelledby="graph-title">
+        <div class="graph-content">
+        <div class="card-heading"><div><p class="eyebrow">THE RELATIONSHIP</p><h2 id="graph-title">在圖上，看見關係</h2></div><span id="slope-badge" class="badge">R = 100 Ω</span></div>
+        <p class="graph-terms"><strong>工作點</strong>是目前的電壓與電流；<strong>斜率</strong>越陡，表示同樣電壓下的電流越大。</p>
+        <div class="graph-stage"><svg id="graph" viewBox="0 0 460 290" role="img" aria-labelledby="graph-svg-title graph-svg-desc"><title id="graph-svg-title">電流對電壓的關係圖</title><desc id="graph-svg-desc"></desc><g id="graph-grid"></g><path id="baseline-line" class="baseline-line"/><path id="current-line" class="current-line"/><path id="point-guides" class="point-guides"/><circle id="baseline-point" r="5" fill="#f7f6f1" stroke="#87958f" stroke-width="2"/><circle id="working-point-halo" r="12" fill="#167666" opacity=".12"/><circle id="working-point" r="5" fill="#167666" stroke="white" stroke-width="2"/><text id="point-label" class="point-label"></text></svg></div>
+        <div class="graph-legend"><span><i class="solid-key"></i>目前阻值</span><span id="baseline-legend"><i class="dash-key"></i>比較基準</span></div>
+        <p id="graph-insight" class="graph-insight"></p>
+        <div id="analysis-details" class="analysis-details">
+          <button id="analysis-toggle" class="analysis-toggle" type="button" aria-expanded="true" aria-controls="analysis-content">用公式與數據看原因</button>
+          <div id="analysis-content" class="analysis-content">
+          <div class="calculation"><span class="calc-label">用公式解釋</span><div><strong><span class="i-color">I</span> = <span class="v-color">V</span> / <span class="r-color">R</span></strong><span id="calculation-values">5 / 100 = 0.05 A = 50 mA</span></div></div>
+          <div class="comparison"><div class="comparison-heading"><h3>前後比一比</h3><div id="baseline-actions" hidden><button id="set-baseline" class="text-button">設為比較基準</button><button id="clear-baseline" class="text-button">清除基準</button></div></div><p id="baseline-status" class="baseline-status" role="status" aria-live="polite" hidden></p><table><caption class="sr-only">調整前後的電壓、電阻與電流</caption><thead><tr><th scope="col">條件</th><th scope="col" class="v-color">V · 電壓</th><th scope="col" class="r-color">R · 電阻</th><th scope="col" class="i-color">I · 電流</th></tr></thead><tbody><tr><th scope="row">基準</th><td id="base-v"></td><td id="base-r"></td><td id="base-i"></td></tr><tr class="now-row"><th scope="row">目前</th><td id="now-v"></td><td id="now-r"></td><td id="now-i"></td></tr></tbody></table><p id="comparison-note"></p></div>
+          </div>
+        </div>
+        </div>
+      </section>
+    </div>
+    <section id="challenge-section" class="challenge-section" hidden aria-labelledby="challenge-title"><div class="challenge-intro"><div><p class="eyebrow">YOUR TURN</p><h2 id="challenge-title">換你，找到那個電流。</h2><p>三個小任務。不計時、不評分，試到理解為止。</p></div><button id="return-explore" class="secondary" hidden>返回自由探索 ↗</button></div><div class="task-grid"><button data-task="0"><span class="task-no">01 / 求電阻</span><strong>20 <small>mA</small></strong><span>電壓固定 5 V，電阻要多大？</span><span class="task-link">開始操作 →</span></button><button data-task="1"><span class="task-no">02 / 求電壓</span><strong>30 <small>mA</small></strong><span>電阻固定 200 Ω，電壓要多少？</span><span class="task-link">開始操作 →</span></button><button data-task="2"><span class="task-no">03 / 維持電流</span><strong>50 <small>mA</small></strong><span>電阻加倍，怎樣維持原來的電流？</span><span class="task-link">開始操作 →</span></button></div></section>
+    <aside class="model-note"><span>關於這個模型</span><p>理想直流電源、忽略導線電阻，使用阻值不因電壓或電流改變的歐姆性電阻；畫面展示各設定下的穩態結果。流動粒子只示意電流相對大小，不代表電子真實速度。</p></aside>
+  </main>
+  <footer class="wrap page-footer"><span>Ohm Lab <span class="footer-dot">·</span> 把公式變成直覺</span><span>觀察。預測。親手驗證。</span></footer>
+</body>
+</html>
