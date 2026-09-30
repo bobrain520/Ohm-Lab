@@ -101,9 +101,11 @@
 .video-section { display:flex !important; flex-direction:column; gap:20px; }
 .video-section .video-copy { width:100%; }
 .video-section .video-copy h2 { font-size:clamp(25px,3vw,36px); }
-#lesson-video { display:block; width:100%; aspect-ratio:16/9; background:#233f37; border-radius:16px; }
+#lesson-video { display:block; width:100%; aspect-ratio:16/9; background:#233f37; border:0; border-radius:16px; }
 .movie-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px; width:100%; }
-.movie-actions a { color:var(--movie-accent); text-underline-offset:4px; }
+.movie-actions a { color:var(--movie-accent); font-size:14px; font-weight:650; text-underline-offset:4px; }
+.movie-actions a:hover { color:var(--ink); text-decoration-thickness:2px; }
+.movie-actions a:focus-visible { outline:3px solid var(--focus); outline-offset:4px; border-radius:4px; }
 #movie-status { font-size:14px; }
 #movie-chapters { display:flex; flex-wrap:wrap; gap:8px; }
 #movie-chapters button { font-size:14px; padding:9px 12px; }
@@ -162,6 +164,7 @@
   .intro-actions button{justify-content:center}
   .movie-actions{display:grid;grid-template-columns:1fr}
   .movie-actions button{justify-content:center;min-height:48px}
+  .movie-actions .movie-external{min-height:44px;display:flex;align-items:center;justify-content:center}
   .movie-tools summary{min-height:48px}
   .movie-tool-actions{align-items:flex-start;flex-direction:column}
   .movie-tool-actions button{min-height:44px}

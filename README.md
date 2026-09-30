@@ -4,7 +4,7 @@
 
 ## 線上內容
 
-- Manim 製作的 1080p 教學影片，含台灣中文旁白
+- YouTube 自適應串流的 Manim 教學影片，含台灣中文旁白
 - 電壓、電流與電阻的基礎實驗
 - 預測挑戰與三個操作任務
 - 可自由調整數值的互動實驗桌
@@ -12,7 +12,7 @@
 
 ## 使用方式
 
-這是純 HTML、CSS 與 JavaScript 網站，不需要安裝套件或建置。透過 GitHub Pages 開啟網站即可使用。
+這是純 HTML、CSS 與 JavaScript 網站，不需要安裝套件或建置。透過 GitHub Pages 開啟網站即可使用；教學影片由 YouTube privacy-enhanced embed 播放，因此觀看影片時需要網路連線。
 
 若要在本機預覽，可在 repository 根目錄啟動任意靜態 HTTP server，例如：
 
